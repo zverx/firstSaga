@@ -5,6 +5,7 @@ import * as actions from './actions';
 const initial = {
   app: {
     status: '',
+    result: '',
     error: {},
   },
   auth: {
@@ -21,8 +22,16 @@ function app(state = initial.app, action) {
     case actions.REQUEST_STEPS:
       return update(state, { status: { $set: 'requesting' } });
 
+    case actions.REQUEST_STEP1:
+    case actions.REQUEST_STEP2:
+    case actions.REQUEST_STEP3:
+      return update(state, { result: { $set: action.payload } });
+
     case actions.RESULT_STEPS:
-      return update(state, { status: { $set: '' } });
+      return update(state, {
+        status: { $set: '' },
+        result: { $set: action.payload },
+      });
 
     default:
       break;

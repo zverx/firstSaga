@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Grid, Row, Form, FormGroup, Button, Col, ControlLabel } from 'react-bootstrap';
+import { Grid, Row, Form, FormGroup, Button, Col, ControlLabel, FormControl } from 'react-bootstrap';
 import * as actions from './../actions';
 
 const mapStateToProps = state => ({
@@ -30,13 +30,24 @@ class Steps extends React.Component {
           <Form horizontal>
 
             <FormGroup>
-              <Col sm={8}>
-                <Col componentClass={ControlLabel} sm={2}>
-                  Run steps
+              <Col componentClass={ControlLabel} sm={2}>
+                Run steps
               </Col>
+              <Col sm={8}>
                 <Button onClick={this.handleRunSteps} disabled={isRequesting}>
                   {isRequesting ? 'Running...' : 'Run'}
                 </Button>
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass={ControlLabel} sm={2}>
+                Result:
+                </Col>
+              <Col sm={2}>
+                <FormControl.Static>
+                  {app.result}
+                </FormControl.Static>
               </Col>
             </FormGroup>
 
