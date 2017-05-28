@@ -4,6 +4,7 @@ import * as actions from './actions';
 
 const initial = {
   app: {
+    status: '',
     error: {},
   },
   auth: {
@@ -16,6 +17,13 @@ const initial = {
 
 function app(state = initial.app, action) {
   switch (action.type) {
+
+    case actions.REQUEST_STEPS:
+      return update(state, { status: { $set: 'requesting' } });
+
+    case actions.RESULT_STEPS:
+      return update(state, { status: { $set: '' } });
+
     default:
       break;
   }

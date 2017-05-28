@@ -14,6 +14,6 @@ function* signIn() {
   }
 }
 
-export default function* rootSaga() {
+export default function* () {
   yield fork(signIn);
 }

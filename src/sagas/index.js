@@ -1,8 +1,8 @@
 import { fork } from 'redux-saga/effects';
 import auth from './auth';
-// import app from './app';
+import app from './app';
 
-export default function* rootSaga() {
+export default function* () {
   yield fork(auth);
-  // yield fork(app);
+  yield fork(app);
 }
