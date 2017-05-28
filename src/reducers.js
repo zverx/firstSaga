@@ -20,14 +20,24 @@ function app(state = initial.app, action) {
   switch (action.type) {
 
     case actions.REQUEST_STEPS:
-      return update(state, { status: { $set: 'requesting' } });
+      return update(state, {
+        status: { $set: 'requesting' },
+        result: { $set: '' },
+      });
 
     case actions.REQUEST_STEP1:
     case actions.REQUEST_STEP2:
     case actions.REQUEST_STEP3:
-      return update(state, { result: { $set: action.payload } });
+      return update(state, {
+        result: { $set: action.payload } });
 
     case actions.RESULT_STEPS:
+      return update(state, {
+        status: { $set: '' },
+        result: { $set: action.payload },
+      });
+
+    case actions.FAILURE_STEPS:
       return update(state, {
         status: { $set: '' },
         result: { $set: action.payload },

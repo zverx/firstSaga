@@ -34,3 +34,6 @@ export const failureStep3 = createAction(FAILURE_STEP3);
 export const RESULT_STEPS = 'RESULT_STEPS';
 export const resultSteps = createAction(RESULT_STEPS);
 
+export const FAILURE_STEPS = 'FAILURE_STEPS';
+export const failureSteps = createAction(FAILURE_STEPS);
+
