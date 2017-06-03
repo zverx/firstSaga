@@ -24,6 +24,7 @@ export default function (state = initState, action) {
     case actions.REQUEST_AUTH:
       return update(state, {
         requestStatus: { $set: constants.requestStatus.REQUESTING },
+        errorMessage: { $set: initState.errorMessage },
       });
 
     case actions.SUCCESS_AUTH:
