@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid, Row, Form, FormGroup, Button, Col, ControlLabel, FormControl } from 'react-bootstrap';
-import * as actions from './../actions';
+import * as actions from './actions';
+import * as constants from './constants';
 
 const mapStateToProps = state => ({
-  app: state.app,
+  steps: state.steps,
 });
 
 class Steps extends React.Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    app: PropTypes.instanceOf(Object).isRequired,
+    steps: PropTypes.instanceOf(Object).isRequired,
   }
 
   handleRunSteps = () => {
@@ -20,9 +21,9 @@ class Steps extends React.Component {
   }
 
   render = () => {
-    const { app } = this.props;
+    const { steps } = this.props;
 
-    const isRequesting = app.status === 'requesting';
+    const isRequesting = steps.requestStatus === constants.requestStatus.REQUESTING;
 
     return (
       <Grid fluid style={{ marginTop: '25px' }}>
@@ -46,7 +47,7 @@ class Steps extends React.Component {
                 </Col>
               <Col sm={2}>
                 <FormControl.Static>
-                  {app.result}
+                  {steps.result}
                 </FormControl.Static>
               </Col>
             </FormGroup>

@@ -1,8 +1,8 @@
 import { delay } from 'redux-saga';
 import { fork, call, put, take } from 'redux-saga/effects';
-import * as actions from './../actions';
+import * as actions from './actions';
 
-function* step(stepName) {
+function step(stepName) {
   if (Math.random() > 0.5) {
     throw new Error(`failure on ${stepName}`);
   }
@@ -26,7 +26,7 @@ function* runSteps() {
       yield put.resolve(actions.requestStep3('step3'));
       yield call(delay, 1000);
 
-      yield put.resolve(actions.resultSteps('success'));
+      yield put.resolve(actions.successSteps('success'));
     } catch (error) {
       yield put.resolve(actions.failureSteps(error.message));
     }

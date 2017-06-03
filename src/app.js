@@ -7,7 +7,7 @@ import Steps from './containers/Steps';
 class App extends React.Component {
   render = () => {
     return (
-      <Tabs defaultActiveKey={1}>
+      <Tabs id="tabs" defaultActiveKey={1}>
         <Tab eventKey={1} title="SignIn">
           <SignIn />
         </Tab>
