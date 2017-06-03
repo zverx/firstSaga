@@ -33,7 +33,7 @@ export default function (state = initState, action) {
         requestStatus: { $set: initState.requestStatus },
       });
 
-    case actions.FAILURE_LOGIN:
+    case actions.FAILURE_AUTH:
       return update(state, {
         status: { $set: constants.auth.FAILURE },
         errorMessage: { $set: action.payload },
